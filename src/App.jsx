@@ -1,17 +1,24 @@
-import { useEffect } from "react";
-import { FaCameraRetro, FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
+import { useEffect, useRef, useState } from 'react';
+import Typed from 'typed.js';
+import { FaCameraRetro, FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
 import { MdOutlineMailOutline } from "react-icons/md";
-import Typed from "typed.js";
+import { FiChevronDown, FiChevronUp } from 'react-icons/fi';
 
 function App() {
+  const [showCountries, setShowCountries] = useState(false);
+
   const links = [
     {
       color: "bg-purple-300",
       text: "Photography",
       link: "#",
       icon: <FaCameraRetro className="w-6 h-6 inline-block mr-2" />,
+      onClick: (event) => {
+        event.preventDefault(); 
+        setShowCountries(!showCountries); 
+      },
+      hasDropdown: true,
       extra: <span className="text-xs text-gray-600 ml-2">(Coming Soon)</span>,
-
 
     },
     {
@@ -40,22 +47,35 @@ function App() {
     },
   ];
 
+  const countries = [
+    "USA",
+    "Netherlands",
+    "Germany",
+    "France",
+    "United Kingdom",
+    "India",
+    "Switzerland",
+    "Belgium",
+    "Luxembourg",
+    "Italy"
+  ];
+
+  const typedRef = useRef(null);
+
   useEffect(() => {
-    const typed = new Typed("#typed-summary", {
-      strings: [
-        "Software Engineer",
-        "Trader",
-        "Traveller",
-        "Lifelong Learner",
-      ],
-      typeSpeed: 50,
-      backSpeed: 25,
+    const options = {
+      strings: ["Software Engineer", "Trader", "Traveller","Forever Learner"],
+      typeSpeed: 100,
+      backSpeed: 50,
       backDelay: 1000,
+      startDelay: 500,
       loop: true,
-    });
+    };
+
+    typedRef.current = new Typed("#typed-summary", options);
 
     return () => {
-      typed.destroy(); // Clean up Typed.js instance
+      typedRef.current.destroy(); // Clean up
     };
   }, []);
 
@@ -68,26 +88,66 @@ function App() {
               <img
                 src="https://avatars.githubusercontent.com/pranavsetty"
                 className="rounded-full object-cover object-center"
+                alt="Pranav Bheemsetty"
               />
             </div>
           </div>
           <div className="text-center p-3">
             <h1 className="text-4xl font-bold">Pranav Bheemsetty</h1>
-            <p className="text-lg mt-3">
-              <span id="typed-summary" className="font-semibold"></span>
-            </p>
+            {/* Wrapper with a fixed height */}
+            <div style={{ height: "1.5em", overflow: "hidden" }}>
+              <p
+                id="typed-summary"
+                className="text-lg mt-3 inline-block"
+                style={{
+                  lineHeight: "0.25", // Ensure text and cursor are aligned
+                  whiteSpace: "nowrap", // Ensure no wrapping occurs
+                }}
+              ></p>
+            </div>
           </div>
           <div className="flex flex-col gap-10">
-            {links.map(({ text, color, link, icon, extra}, index) => (
-              <a href={link} key={index} target="_blank">
-                <div
-                  className={`w-80 sm:w-96 mx-auto ${color} text-center text-xl font-bold py-3 border-2 border-black shadow-custom hover:shadow-none transition-all hover:translate-x-1 hover:translate-y-1`}
+            {links.map(({ text, color, link, icon, onClick, hasDropdown, extra }, index) => (
+              <div key={index}>
+                <a
+                  href={link}
+                  onClick={onClick}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full"
                 >
-                  {icon}
-                  {text}
-                  {extra && extra}
-                </div>
-              </a>
+                  <div
+                    className={`w-80 sm:w-96 mx-auto ${color} flex items-center justify-between text-xl font-bold py-3 border-2 border-black shadow-custom hover:shadow-none transition-all hover:translate-x-1 hover:translate-y-1`}
+                  >
+                    <span className="flex items-center justify-center w-full">
+                      {icon}
+                      {text}
+                      {extra && extra}
+                    </span>
+                    {hasDropdown && (
+                      <span className="mr-3">
+                        {showCountries ? (
+                          <FiChevronUp className="w-6 h-6" />
+                        ) : (
+                          <FiChevronDown className="w-6 h-6" />
+                        )}
+                      </span>
+                    )}
+                  </div>
+                </a>
+                {hasDropdown && showCountries && (
+                  <div className="mt-3 space-y-2 text-center transition-all duration-500 ease-in-out">
+                    {countries.map((country, idx) => (
+                      <div
+                        key={idx}
+                        className="w-80 sm:w-96 mx-auto bg-gray-300 text-lg py-2 border-2 border-black shadow-custom hover:shadow-none transition-all hover:translate-x-1 hover:translate-y-1"
+                      >
+                        {country}
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
             ))}
           </div>
         </div>
