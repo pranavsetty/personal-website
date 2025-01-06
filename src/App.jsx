@@ -1,3 +1,8 @@
+import { FaCameraRetro, FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
+import { MdOutlineMailOutline } from "react-icons/md";
+
+
+
 function App() {
 
   const links = [
@@ -5,7 +10,8 @@ function App() {
     {
       color: "bg-purple-300",
       text: "Photography",
-      link:"#"
+      link: "#",
+      icon:<FaCameraRetro className="w-6 h-6 inline-block mr-2" />
   
   
     },
@@ -14,21 +20,35 @@ function App() {
     {
     color: "bg-red-300",
     text: "Github",
-    link:"https://github.com/pranavsetty"
+    link: "https://github.com/pranavsetty",
+    icon: <FaGithub className="w-6 h-6 inline-block mr-2" />
+
+    
 
 
   },
   {
     color: "bg-sky-300",
     text: "LinkedIn",
-    link:"https://www.linkedin.com/in/pranavsetty/"
+    link: "https://www.linkedin.com/in/pranavsetty/",
+    icon: <FaLinkedin className="w-6 h-6 inline-block mr-2" />
+
 
 
     },
     {
       color: "bg-pink-300",
       text: "Twitter",
-      link:"https://x.com/pranav_setty"
+      link: "https://x.com/pranav_setty",
+      icon: <FaTwitter className="w-6 h-6 inline-block mr-2" />
+
+    },
+
+    {
+      color: "bg-teal-300",
+      text: "Contact",
+      link: "https://pranavbheemsetty.typeform.com/to/ttyZrq",
+      icon:<MdOutlineMailOutline className="w-6 h-6 inline-block mr-2" />
   
   
     },
@@ -56,12 +76,13 @@ function App() {
 			</p>
 		</div>
 		<div className="flex flex-col gap-10">
-			{links.map(({ text, color, link }, index) => {
+			{links.map(({ text, color, link, icon }, index) => {
 				return (
 					<a href={link} key={index} target="_blank">
 						<div
 							className={`w-80 sm:w-96 mx-auto ${color} text-center text-xl font-bold py-3 border-2 border-black shadow-custom hover:shadow-none transition-all hover:translate-x-1 hover:translate-y-1`}
-						>
+            >
+              {icon}
 							{text}
 						</div>
 					</a>
