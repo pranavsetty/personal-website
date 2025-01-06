@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { FaCameraRetro, FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
 import { MdOutlineMailOutline } from "react-icons/md";
 import Typed from "typed.js";
@@ -10,6 +10,9 @@ function App() {
       text: "Photography",
       link: "#",
       icon: <FaCameraRetro className="w-6 h-6 inline-block mr-2" />,
+      extra: <span className="text-xs text-gray-600 ml-2">(Coming Soon)</span>,
+
+
     },
     {
       color: "bg-red-300",
@@ -75,13 +78,14 @@ function App() {
             </p>
           </div>
           <div className="flex flex-col gap-10">
-            {links.map(({ text, color, link, icon }, index) => (
+            {links.map(({ text, color, link, icon, extra}, index) => (
               <a href={link} key={index} target="_blank">
                 <div
                   className={`w-80 sm:w-96 mx-auto ${color} text-center text-xl font-bold py-3 border-2 border-black shadow-custom hover:shadow-none transition-all hover:translate-x-1 hover:translate-y-1`}
                 >
                   {icon}
                   {text}
+                  {extra && extra}
                 </div>
               </a>
             ))}
