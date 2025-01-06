@@ -14,12 +14,11 @@ function App() {
       link: "#",
       icon: <FaCameraRetro className="w-6 h-6 inline-block mr-2" />,
       onClick: (event) => {
-        event.preventDefault(); 
-        setShowCountries(!showCountries); 
+        event.preventDefault();
+        setShowCountries(!showCountries);
       },
       hasDropdown: true,
       extra: <span className="text-xs text-gray-600 ml-2">(Coming Soon)</span>,
-
     },
     {
       color: "bg-red-300",
@@ -64,7 +63,7 @@ function App() {
 
   useEffect(() => {
     const options = {
-      strings: ["Software Engineer", "Trader", "Traveller","Forever Learner"],
+      strings: ["Software Engineer", "Trader", "Traveller", "Forever Learner"],
       typeSpeed: 100,
       backSpeed: 50,
       backDelay: 1000,
@@ -81,7 +80,7 @@ function App() {
 
   return (
     <>
-      <div className="w-full h-screen bg-yellow-300 flex justify-center items-center">
+      <div className="w-full min-h-screen bg-yellow-300 flex justify-center items-center">
         <div className="max-w-2xl mx-auto flex flex-col gap-5">
           <div className="h-48 w-48 mx-auto">
             <div className="aspect-w-1 aspect-h-1">
@@ -94,14 +93,13 @@ function App() {
           </div>
           <div className="text-center p-3">
             <h1 className="text-4xl font-bold">Pranav Bheemsetty</h1>
-            {/* Wrapper with a fixed height */}
             <div style={{ height: "1.5em", overflow: "hidden" }}>
               <p
                 id="typed-summary"
                 className="text-lg mt-3 inline-block"
                 style={{
-                  lineHeight: "0.25", // Ensure text and cursor are aligned
-                  whiteSpace: "nowrap", // Ensure no wrapping occurs
+                  lineHeight: "0.25",
+                  whiteSpace: "nowrap",
                 }}
               ></p>
             </div>
