@@ -93,8 +93,9 @@ function Home() {
         </div>
         <div className="text-center p-3">
           <h1 className="text-4xl font-bold">Pranav Bheemsetty</h1>
-          <div style={{ height: "1em", overflow: "hidden" }}>
-            <p id="typed-summary" className="text-lg mt-3 inline-block"></p>
+          <div style={{ height: "1.5em", overflow: "hidden" }}>
+            <p id="typed-summary" className="text-lg mt-3 inline-block"
+            style = {{lineHeight: "0.25", whiteSpace:"nowrap"}}></p>
           </div>
         </div>
         <div className="flex flex-col gap-10">
