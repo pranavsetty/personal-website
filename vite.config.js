@@ -5,8 +5,5 @@ export default defineConfig({
   plugins: [react()],
   build: {
     outDir: "build",
-    rollupOptions: {
-      external: ["react-router-dom"],
-    },
   },
 });
