@@ -28,7 +28,7 @@ function PhotoGallery() {
 
   return (
     <div className="w-full min-h-screen bg-gray-100 flex flex-col items-center">
-      <h1 className="text-4xl font-bold mt-10">{country} - Photo Gallery</h1>
+      <h1 className="text-4xl font-bold mt-10">{country}</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 p-5">
         {imageUrls.length > 0 ? (
           imageUrls.map((src, index) => (

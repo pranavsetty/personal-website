@@ -18,7 +18,8 @@ function Home() {
     "Switzerland",
     "Belgium",
     "Luxembourg",
-    "Italy"
+    "Italy",
+    "Vatican-City"
   ];
   const navigate = useNavigate();
 
