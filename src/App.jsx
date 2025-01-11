@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Route, Routes, useNavigate } from "react-router-dom";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import Typed from "typed.js";
 import { FaCameraRetro, FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
 import { MdOutlineMailOutline } from "react-icons/md";
@@ -25,7 +25,7 @@ function Home() {
 
   const links = [
     {
-      color: "bg-purple-300",
+      color: "bg-slate-300",
       text: "Photography",
       link: "#",
       icon: <FaCameraRetro className="w-6 h-6 inline-block mr-2" />,
@@ -36,25 +36,25 @@ function Home() {
       hasDropdown: true,
     },
     {
-      color: "bg-red-300",
+      color: "bg-slate-300",
       text: "Github",
       link: "https://github.com/pranavsetty",
       icon: <FaGithub className="w-6 h-6 inline-block mr-2" />,
     },
     {
-      color: "bg-sky-300",
+      color: "bg-slate-300",
       text: "LinkedIn",
       link: "https://www.linkedin.com/in/pranavsetty/",
       icon: <FaLinkedin className="w-6 h-6 inline-block mr-2" />,
     },
     {
-      color: "bg-pink-300",
+      color: "bg-slate-300",
       text: "Twitter",
       link: "https://x.com/pranav_setty",
       icon: <FaTwitter className="w-6 h-6 inline-block mr-2" />,
     },
     {
-      color: "bg-teal-300",
+      color: "bg-slate-300",
       text: "Contact",
       link: "https://pranavbheemsetty.typeform.com/to/ttyZrq",
       icon: <MdOutlineMailOutline className="w-6 h-6 inline-block mr-2" />,
@@ -80,9 +80,83 @@ function Home() {
     };
   }, []);
 
+  // Initialize particles.js once the component has mounted
+  useEffect(() => {
+    if (window.particlesJS) {
+      window.particlesJS("particles-js", {
+        particles: {
+          number: {
+            value: 80,
+            density: {
+              enable: true,
+              value_area: 800,
+            },
+          },
+          shape: {
+            type: "circle",
+            stroke: {
+              width: 0,
+              color: "#000000",
+            },
+          },
+          opacity: {
+            value: 0.5,
+            random: true,
+            anim: {
+              enable: true,
+              speed: 1,
+              opacity_min: 0.1,
+            },
+          },
+          size: {
+            value: 3,
+            random: true,
+            anim: {
+              enable: true,
+              speed: 40,
+              size_min: 0.1,
+            },
+          },
+          line_linked: {
+            enable: true,
+            distance: 150,
+            color: "#ffffff",
+            opacity: 0.4,
+            width: 1,
+          },
+          move: {
+            enable: true,
+            speed: 6,
+            direction: "none",
+            random: false,
+            straight: false,
+            out_mode: "out",
+            bounce: false,
+          },
+        },
+        interactivity: {
+          detect_on: "canvas",
+          events: {
+            onhover: {
+              enable: true,
+              mode: "repulse",
+            },
+            onclick: {
+              enable: true,
+              mode: "push",
+            },
+          },
+        },
+      });
+    }
+  }, []);
+
   return (
-    <div className={`w-full min-h-screen bg-gray-300 flex justify-center items-center ${showCountries ? 'pt-10 pb-10' : ''}`}>
-      <div className="max-w-2xl mx-auto flex flex-col gap-5">
+    <div className={`w-full min-h-screen bg-red-800 flex justify-center items-center ${showCountries ? 'pt-10 pb-10' : ''}`}>
+      {/* Particles Background */}
+      <div id="particles-js" className="absolute top-0 left-0 w-full h-full z-0"></div>
+      
+      <div className="max-w-2xl mx-auto flex flex-col gap-5 relative z-10">
         <div className={`h-48 w-48 mx-auto ${showCountries ? 'mt-10' : ''}`}>
           <div className="aspect-w-1 aspect-h-1">
             <img
@@ -93,7 +167,7 @@ function Home() {
           </div>
         </div>
         <div className="text-center p-3">
-          <h1 className="text-4xl font-bold text-gray-800 ">Pranav Bheemsetty</h1>
+          <h1 className="text-4xl  text-gray-300 ">Pranav Bheemsetty</h1>
           <div style={{ height: "1.5em", overflow: "hidden" }}>
             <p id="typed-summary" className="text-lg mt-3 inline-block" style={{ lineHeight: "0.25", whiteSpace: "nowrap" }}></p>
           </div>
