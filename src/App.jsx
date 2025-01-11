@@ -6,7 +6,6 @@ import { MdOutlineMailOutline } from "react-icons/md";
 import { FiChevronDown, FiChevronUp } from "react-icons/fi";
 import PhotoGallery from "./PhotoGallery";
 
-
 function Home() {
   const [showCountries, setShowCountries] = useState(false);
   const countries = [
@@ -82,9 +81,9 @@ function Home() {
   }, []);
 
   return (
-    <div className="w-full min-h-screen bg-gray-300 flex justify-center items-center">
+    <div className={`w-full min-h-screen bg-gray-300 flex justify-center items-center ${showCountries ? 'pt-10 pb-10' : ''}`}>
       <div className="max-w-2xl mx-auto flex flex-col gap-5">
-        <div className="h-48 w-48 mx-auto">
+        <div className={`h-48 w-48 mx-auto ${showCountries ? 'mt-10' : ''}`}>
           <div className="aspect-w-1 aspect-h-1">
             <img
               src="https://avatars.githubusercontent.com/pranavsetty"
@@ -96,8 +95,7 @@ function Home() {
         <div className="text-center p-3">
           <h1 className="text-4xl font-bold text-gray-800 ">Pranav Bheemsetty</h1>
           <div style={{ height: "1.5em", overflow: "hidden" }}>
-            <p id="typed-summary" className="text-lg mt-3 inline-block"
-            style = {{lineHeight: "0.25", whiteSpace:"nowrap"}}></p>
+            <p id="typed-summary" className="text-lg mt-3 inline-block" style={{ lineHeight: "0.25", whiteSpace: "nowrap" }}></p>
           </div>
         </div>
         <div className="flex flex-col gap-10">
@@ -129,7 +127,7 @@ function Home() {
                 </div>
               </a>
               {hasDropdown && showCountries && (
-                <div className="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-4 text-center">
+                <div className="mt-3 mb-5 grid grid-cols-1 sm:grid-cols-2 gap-4 text-center">
                   {countries.map((country, idx) => (
                     <div
                       key={idx}
