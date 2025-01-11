@@ -127,12 +127,12 @@ function Home() {
                 </div>
               </a>
               {hasDropdown && showCountries && (
-                <div className="mt-3 space-y-2 text-center">
+                <div className="mt-3 grid grid-cols-2 gap-4 text-center">
                   {countries.map((country, idx) => (
                     <div
                       key={idx}
                       onClick={() => navigate(`/photos/${country}`)}
-                      className="cursor-pointer w-80 sm:w-96 mx-auto bg-gray-300 text-lg py-2 border-2 border-black shadow-custom hover:shadow-none transition-all hover:translate-x-1 hover:translate-y-1"
+                      className="cursor-pointer w-full bg-gray-300 text-lg py-2 border-2 border-black shadow-custom hover:shadow-none transition-all hover:translate-x-1 hover:translate-y-1"
                     >
                       {country}
                     </div>
