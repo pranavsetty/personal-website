@@ -12,7 +12,10 @@ export default {
       boxShadow: {
         custom: "10px 10px 0 -1px rgba(0, 0, 0, 1)",
       },
+      fontFamily: {
+        sans: ["Raleway", "sans-serif"],
+      },
     },
+    plugins: [aspectRatio],
   },
-  plugins: [aspectRatio],
 };
