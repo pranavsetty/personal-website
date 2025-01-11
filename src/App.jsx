@@ -6,20 +6,22 @@ import { MdOutlineMailOutline } from "react-icons/md";
 import { FiChevronDown, FiChevronUp } from "react-icons/fi";
 import PhotoGallery from "./PhotoGallery";
 
+
 function Home() {
   const [showCountries, setShowCountries] = useState(false);
   const countries = [
-    "USA",
-    "Netherlands",
-    "Germany",
-    "France",
-    "United Kingdom",
-    "India",
-    "Switzerland",
-    "Belgium",
-    "Luxembourg",
-    "Italy"
-  ];
+    { name: "USA", flag: "🇺🇸" },
+    { name: "Netherlands", flag: "🇳🇱" },
+    { name: "Germany", flag: "🇩🇪" },
+    { name: "France", flag: "🇫🇷" },
+    { name: "United Kingdom", flag: "🇬🇧" },
+    { name: "India", flag: "🇮🇳" },
+    { name: "Switzerland", flag: "🇨🇭" },
+    { name: "Belgium", flag: "🇧🇪" },
+    { name: "Luxembourg", flag: "🇱🇺" },
+    { name: "Italy", flag: "🇮🇹" },
+    { name: "Vatican-City", flag: "🇻🇦" },
+  ].sort((a, b) => a.name.localeCompare(b.name));
   const navigate = useNavigate();
 
   const links = [
@@ -80,7 +82,7 @@ function Home() {
   }, []);
 
   return (
-    <div className="w-full min-h-screen bg-yellow-300 flex justify-center items-center">
+    <div className="w-full min-h-screen bg-gray-300 flex justify-center items-center">
       <div className="max-w-2xl mx-auto flex flex-col gap-5">
         <div className="h-48 w-48 mx-auto">
           <div className="aspect-w-1 aspect-h-1">
@@ -92,7 +94,7 @@ function Home() {
           </div>
         </div>
         <div className="text-center p-3">
-          <h1 className="text-4xl font-bold">Pranav Bheemsetty</h1>
+          <h1 className="text-4xl font-bold text-gray-800 ">Pranav Bheemsetty</h1>
           <div style={{ height: "1.5em", overflow: "hidden" }}>
             <p id="typed-summary" className="text-lg mt-3 inline-block"
             style = {{lineHeight: "0.25", whiteSpace:"nowrap"}}></p>
@@ -106,7 +108,7 @@ function Home() {
                 onClick={onClick}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full"
+                className="w-full text-gray-800"
               >
                 <div
                   className={`w-80 sm:w-96 mx-auto ${color} flex items-center justify-between text-xl font-bold py-3 border-2 border-black shadow-custom hover:shadow-none transition-all hover:translate-x-1 hover:translate-y-1`}
@@ -127,14 +129,14 @@ function Home() {
                 </div>
               </a>
               {hasDropdown && showCountries && (
-                <div className="mt-3 grid grid-cols-2 gap-4 text-center">
+                <div className="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-4 text-center">
                   {countries.map((country, idx) => (
                     <div
                       key={idx}
-                      onClick={() => navigate(`/photos/${country}`)}
+                      onClick={() => navigate(`/photos/${country.name}`)}
                       className="cursor-pointer w-full bg-gray-300 text-lg py-2 border-2 border-black shadow-custom hover:shadow-none transition-all hover:translate-x-1 hover:translate-y-1"
                     >
-                      {country}
+                      <span>{country.flag} {country.name}</span>
                     </div>
                   ))}
                 </div>
