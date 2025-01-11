@@ -201,7 +201,7 @@ function Home() {
                 </div>
               </a>
               {hasDropdown && showCountries && (
-                <div className="mt-3 mb-5 grid grid-cols-1 sm:grid-cols-2 gap-4 text-center">
+                <div className="mt-3 mb-5 grid grid-cols-2 gap-4 text-center">
                   {countries.map((country, idx) => (
                     <div
                       key={idx}
