@@ -10,7 +10,7 @@ export default {
   theme: {
     extend: {
       boxShadow: {
-        custom: "10px 10px 0 -1px rgba(0, 0, 0, 0.5)",
+        custom: "10px 10px 0 -1px rgba(0, 0, 0, 0.4)",
       },
       fontFamily: {
         sans: ["Raleway", "sans-serif"],

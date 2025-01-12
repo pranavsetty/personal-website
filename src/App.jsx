@@ -1,9 +1,11 @@
 import { BrowserRouter as Router, Route, Routes, useNavigate } from "react-router-dom";
 import { useEffect, useState, useRef } from "react";
 import Typed from "typed.js";
-import { FaCameraRetro, FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
+import { FaCameraRetro, FaGithub, FaLinkedin, FaTwitter, FaCode } from "react-icons/fa";
 import { MdOutlineMailOutline } from "react-icons/md";
 import { FiChevronDown, FiChevronUp } from "react-icons/fi";
+import { BiSolidCameraMovie } from "react-icons/bi";
+import { FaPhotoFilm } from "react-icons/fa6";
 import PhotoGallery from "./PhotoGallery";
 
 function Home() {
@@ -37,6 +39,31 @@ function Home() {
     },
     {
       color: "bg-slate-300",
+      text: "Snapshots",
+      link: "#",
+      icon: <FaPhotoFilm className="w-6 h-6 inline-block mr-2" />,
+      subtitle: "Coming soon",
+      
+    },
+
+    {
+      color: "bg-slate-300",
+      text: "Movies",
+      link: "#",
+      icon: <BiSolidCameraMovie className="w-6 h-6 inline-block mr-2" />,
+      subtitle: "Coming soon",
+
+    },
+    {
+      color: "bg-slate-300",
+      text: "Projects",
+      link: "#",
+      icon: <FaCode className="w-6 h-6 inline-block mr-2" />,
+      subtitle: "Coming soon",
+
+    },
+    {
+      color: "bg-slate-300",
       text: "Github",
       link: "https://github.com/pranavsetty",
       icon: <FaGithub className="w-6 h-6 inline-block mr-2" />,
@@ -53,6 +80,8 @@ function Home() {
       link: "https://x.com/pranav_setty",
       icon: <FaTwitter className="w-6 h-6 inline-block mr-2" />,
     },
+
+
     {
       color: "bg-slate-300",
       text: "Contact",
@@ -80,7 +109,6 @@ function Home() {
     };
   }, []);
 
-  // Initialize particles.js once the component has mounted
   useEffect(() => {
     if (window.particlesJS) {
       window.particlesJS("particles-js", {
@@ -152,28 +180,39 @@ function Home() {
   }, []);
 
   return (
-    <div className={`w-full min-h-screen bg-red-800 flex justify-center items-center ${showCountries ? 'pt-10 pb-10' : ''}`}>
+    <div className="w-full min-h-screen bg-red-800 flex justify-center items-center px-4 relative">
       {/* Particles Background */}
-      <div id="particles-js" className="absolute top-0 left-0 w-full h-full z-0"></div>
+      <div
+        id="particles-js"
+        className="fixed top-0 left-0 w-full h-full z-0"
+      ></div>
       
-      <div className="max-w-2xl mx-auto flex flex-col gap-5 relative z-10">
-        <div className={`h-48 w-48 mx-auto ${showCountries ? 'mt-10' : ''}`}>
-          <div className="aspect-w-1 aspect-h-1">
-            <img
-              src="https://avatars.githubusercontent.com/pranavsetty"
-              className="rounded-full object-cover object-center"
-              alt="Pranav Bheemsetty"
-            />
-          </div>
+      {/* Content Wrapper */}
+      <div className="max-w-2xl mx-auto flex flex-col gap-8 relative z-10 pt-10 pb-10">
+        {/* Profile Image */}
+        <div className="h-48 w-48 mx-auto">
+          <img
+            src="https://avatars.githubusercontent.com/pranavsetty"
+            className="rounded-full object-cover object-center"
+            alt="Pranav Bheemsetty"
+          />
         </div>
+  
+        {/* Header */}
         <div className="text-center p-3">
-          <h1 className="text-4xl  text-gray-300 ">Pranav Bheemsetty</h1>
+          <h1 className="text-4xl text-gray-300">Pranav Bheemsetty</h1>
           <div style={{ height: "1.5em", overflow: "hidden" }}>
-            <p id="typed-summary" className="text-lg mt-3 inline-block" style={{ lineHeight: "0.25", whiteSpace: "nowrap" }}></p>
+            <p
+              id="typed-summary"
+              className="text-lg mt-3 inline-block"
+              style={{ lineHeight: "0.25", whiteSpace: "nowrap" }}
+            ></p>
           </div>
         </div>
+  
+        {/* Links */}
         <div className="flex flex-col gap-10">
-          {links.map(({ text, color, link, icon, onClick, hasDropdown }, index) => (
+          {links.map(({ text, color, link, icon, onClick, hasDropdown, subtitle }, index) => (
             <div key={index}>
               <a
                 href={link}
@@ -188,6 +227,11 @@ function Home() {
                   <span className="flex items-center justify-center w-full">
                     {icon}
                     {text}
+                    {subtitle && (
+                      <span className="ml-2 text-sm font-normal text-gray-600">
+                        ({subtitle})
+                      </span>
+                    )}
                   </span>
                   {hasDropdown && (
                     <span className="mr-3">
@@ -208,7 +252,9 @@ function Home() {
                       onClick={() => navigate(`/photos/${country.name}`)}
                       className="cursor-pointer w-full bg-gray-300 text-lg py-2 border-2 border-black shadow-custom hover:shadow-none transition-all hover:translate-x-1 hover:translate-y-1"
                     >
-                      <span>{country.flag} {country.name}</span>
+                      <span>
+                        {country.flag} {country.name}
+                      </span>
                     </div>
                   ))}
                 </div>
