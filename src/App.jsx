@@ -180,7 +180,7 @@ function Home() {
   }, []);
 
   return (
-    <div className="w-full min-h-screen bg-red-800 flex justify-center items-center px-4 relative">
+    <div className="w-full min-h-screen bg-gradient-to-r from-red-300 via-purple-400 to-blue-600 flex justify-center items-center px-4 relative">
       {/* Particles Background */}
       <div
         id="particles-js"
@@ -196,11 +196,12 @@ function Home() {
             className="rounded-full object-cover object-center"
             alt="Pranav Bheemsetty"
           />
+
         </div>
   
         {/* Header */}
         <div className="text-center p-3">
-          <h1 className="text-4xl text-gray-300">Pranav Bheemsetty</h1>
+          <h1 className="text-7xl text-gray-300">Pranav Bheemsetty</h1>
           <div style={{ height: "1.5em", overflow: "hidden" }}>
             <p
               id="typed-summary"

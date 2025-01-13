@@ -15,6 +15,10 @@ export default {
       fontFamily: {
         sans: ["Raleway", "sans-serif"],
       },
+      backgroundImage: {
+        "gradient-noise": "linear-gradient(135deg, #ffd700, #7b68ee)", // Adjust colors
+        "noise-texture": "url('path-to-noise-texture.png')", // Add your texture image
+      },
     },
     plugins: [aspectRatio],
   },
