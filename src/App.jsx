@@ -7,6 +7,7 @@ import { FiChevronDown, FiChevronUp } from "react-icons/fi";
 import { BiSolidCameraMovie } from "react-icons/bi";
 import { FaPhotoFilm } from "react-icons/fa6";
 import PhotoGallery from "./PhotoGallery";
+import Movies from "./pages/Movies";
 
 function Home() {
   const [showCountries, setShowCountries] = useState(false);
@@ -49,7 +50,7 @@ function Home() {
     {
       color: "bg-slate-300",
       text: "Movies",
-      link: "#",
+      link: "/movies",
       icon: <BiSolidCameraMovie className="w-6 h-6 inline-block mr-2" />,
       subtitle: "Coming soon",
 
@@ -274,6 +275,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/photos/:country" element={<PhotoGallery />} />
+        <Route path="/movies" element={<Movies />} />
       </Routes>
     </Router>
   );
