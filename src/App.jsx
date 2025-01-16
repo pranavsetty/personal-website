@@ -202,7 +202,7 @@ function Home() {
   
         {/* Header */}
         <div className="text-center p-3">
-          <h1 className="text-7xl text-gray-300">Pranav Bheemsetty</h1>
+          <h1 className="text-6xl text-gray-300">Pranav Bheemsetty</h1>
           <div style={{ height: "1.5em", overflow: "hidden" }}>
             <p
               id="typed-summary"
