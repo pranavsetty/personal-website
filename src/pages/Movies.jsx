@@ -1,56 +1,14 @@
 import { useState } from "react";
+import moviesData from "../json/movies.json";
+import tvShowsData from "../json/tvShows.json";
 
 const Movies = () => {
     const [search, setSearch] = useState("");
     const [category, setCategory] = useState("movies"); // Default: Movies
     const [language, setLanguage] = useState("All"); // Default: Show all languages
 
-    // Define Movies with Rating & Language
-    const movies = [
-        { name: "Iron Man", category: "Masterpiece", language: "English" },
-        { name: "Dr Strange", category: "Great", language: "English" },
-        { name: "Thor: Ragnarok", category: "Great", language: "English" },
-        { name: "RRR", category: "Good", language: "Telugu" },
-        { name: "Lucky Bhaskar", category: "Great", language: "Telugu" },
-        { name: "Oh My Kadavule", category: "Great", language: "Tamil" },
-        { name: "Bachna Ae Haseeno", category: "Good", language: "Hindi" },
-        { name: "Parasite", category: "Great", language: "Korean" },
-    ];
-
-    // Define TV Shows with Rating & Language
-    const tvShows = [
-        { name: "Silicon Valley",category:"Masterpiece",language:"English"},
-        { name: "Breaking Bad", category: "Masterpiece", language: "English" },
-        { name: "Modern Family", category: "Masterpiece", language: "English" },
-        { name: "New Girl", category: "Masterpiece", language: "English" },
-        { name: "The Big Bang Theory", category: "Masterpiece", language: "English" },
-        { name: "Friends", category: "Masterpiece", language: "English" },
-        { name: "Suits", category: "Masterpiece", language: "English" },
-        { name: "The Office", category: "Masterpiece", language: "English" },
-        { name: "Game of Thrones", category: "Masterpiece", language: "English" },
-        { name: "Squid Games", category: "Great", language: "Korean" },
-        { name: "Two and a Half Men", category: "Great", language: "English" },
-        { name: "Sherlock", category: "Masterpiece", language: "English" },
-        { name: "Stranger Things", category: "Great", language: "English" },
-        { name: "Arcane", category: "Great", language: "English" },
-        { name: "Scam 1992", category: "Great", language: "Hindi" },
-        { name: "House of Cards", category: "Masterpiece", language: "English" },
-        { name: "Demon Slayer", category: "Masterpiece", language: "Japanese" },
-        { name: "Family Man", category: "Great", language: "Hindi" },
-        { name: "Sacred Games", category: "Great", language: "Hindi" },
-        { name: "Mirzapur", category: "Great", language: "Hindi" },
-        { name: "Farzi", category: "Great", language: "Hindi" },
-        { name: "Inside Edge", category: "Great", language: "Hindi" },
-        {name: "Made in Heaven",category:"Great",language:"Hindi"},
-        
-
-
-        
-        
-    ];
-
-    // Get correct list based on selected category
-    let list = category === "movies" ? movies : tvShows;
+    // Get the list of movies or tvShows based on selected category
+    let list = category === "movies" ? moviesData : tvShowsData;
 
     // Apply search filter
     list = list.filter(item => item.name.toLowerCase().includes(search.toLowerCase()));
@@ -65,7 +23,7 @@ const Movies = () => {
     list.sort((a, b) => categoryOrder.indexOf(a.category) - categoryOrder.indexOf(b.category));
 
     // Get unique languages for the filter dropdown
-    const allLanguages = ["All", ...new Set([...movies, ...tvShows].map(item => item.language))];
+    const allLanguages = ["All", ...new Set([...moviesData, ...tvShowsData].map(item => item.language))];
 
     return (
         <div className="w-full min-h-screen flex flex-col items-center bg-gray-900 text-white p-4">

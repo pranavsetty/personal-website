@@ -1,0 +1,11 @@
+[
+    { "name": "Iron Man", "category": "Masterpiece", "language": "English" },
+    { "name": "Dr Strange", "category": "Great", "language": "English" },
+    { "name": "Thor: Ragnarok", "category": "Great", "language": "English" },
+    { "name": "RRR", "category": "Good", "language": "Telugu" },
+    { "name": "Lucky Bhaskar", "category": "Great", "language": "Telugu" },
+    { "name": "Oh My Kadavule", "category": "Great", "language": "Tamil" },
+    { "name": "Bachna Ae Haseeno", "category": "Good", "language": "Hindi" },
+    { "name": "Parasite", "category": "Great", "language": "Korean" }
+  ]
+  
