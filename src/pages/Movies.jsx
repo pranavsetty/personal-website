@@ -1,6 +1,7 @@
 import { useState } from "react";
 import moviesData from "../json/movies.json";
 import tvShowsData from "../json/tvShows.json";
+import NavBar from "../components/NavBar";
 
 const Movies = () => {
     const [search, setSearch] = useState("");
@@ -27,6 +28,7 @@ const Movies = () => {
 
     return (
         <div className="w-full min-h-screen flex flex-col items-center bg-gray-900 text-white p-4">
+            <NavBar />
             {/* Color Code Key */}
             <div className="flex flex-wrap justify-center gap-4 mb-4">
                 <div className="flex items-center gap-2">
