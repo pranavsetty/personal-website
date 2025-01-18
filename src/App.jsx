@@ -52,9 +52,12 @@ function Home() {
       text: "Movies",
       link: "/movies",
       icon: <BiSolidCameraMovie className="w-6 h-6 inline-block mr-2" />,
-      subtitle: "Coming soon",
-
+      onClick: (event) => {
+        event.preventDefault();
+        navigate("/movies");
+      }
     },
+    
     {
       color: "bg-slate-300",
       text: "Projects",
