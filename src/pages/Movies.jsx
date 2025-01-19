@@ -29,6 +29,8 @@ const Movies = () => {
     return (
         <div className="w-full min-h-screen flex flex-col items-center bg-gray-900 text-white p-4">
             <NavBar />
+            <h1 className="text-3xl font-bold mb-4 py-5">Movies & TV Shows</h1>
+  
             {/* Color Code Key */}
             <div className="flex flex-wrap justify-center gap-4 mb-4">
                 <div className="flex items-center gap-2">

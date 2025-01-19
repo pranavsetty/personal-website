@@ -9,10 +9,6 @@ const NavBar = () => {
         <FaHome />
       </Link>
 
-      {/* Movie Title in the Center */}
-      <div className="flex-grow text-center">
-        <h1 className="text-white text-2xl font-bold">Movies</h1>
-      </div>
     </nav>
   );
 };
