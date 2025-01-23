@@ -7,8 +7,10 @@ import { FiChevronDown, FiChevronUp } from "react-icons/fi";
 import { BiSolidCameraMovie } from "react-icons/bi";
 import { FaPhotoFilm } from "react-icons/fa6";
 import PhotoGallery from "./PhotoGallery";
-import Movies from "./pages/Movies";
+import Movies from "./pages/Movies"; 
 import ParticlesBackground from "./components/ParticlesBackground";
+import Snapshots from "./pages/Snapshots";
+import Projects from "./pages/Projects";
 
 function Home() {
   const [showCountries, setShowCountries] = useState(false);
@@ -42,9 +44,12 @@ function Home() {
     {
       color: "bg-slate-300",
       text: "Snapshots",
-      link: "#",
+      link: "/snapshots",
       icon: <FaPhotoFilm className="w-6 h-6 inline-block mr-2" />,
-      subtitle: "Coming soon",
+      onClick: (event) => {
+        event.preventDefault();
+        navigate("/snapshots");
+      }
       
     },
 
@@ -62,9 +67,12 @@ function Home() {
     {
       color: "bg-slate-300",
       text: "Projects",
-      link: "#",
+      link: "/projects",
       icon: <FaCode className="w-6 h-6 inline-block mr-2" />,
-      subtitle: "Coming soon",
+      onClick: (event) => {
+        event.preventDefault();
+        navigate("/projects");
+      }
 
     },
     {
@@ -209,6 +217,9 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/photos/:country" element={<PhotoGallery />} />
         <Route path="/movies" element={<Movies />} />
+        <Route path="/snapshots" element={<Snapshots />} />
+        <Route path="/projects" element={<Projects />} />
+
       </Routes>
     </Router>
   );
