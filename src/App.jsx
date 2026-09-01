@@ -7,8 +7,7 @@ import { FiChevronDown, FiChevronUp } from "react-icons/fi";
 import { BiSolidCameraMovie } from "react-icons/bi";
 import { FaPhotoFilm } from "react-icons/fa6";
 import PhotoGallery from "./PhotoGallery";
-import Movies from "./pages/Movies"; 
-import ParticlesBackground from "./components/ParticlesBackground";
+import Movies from "./pages/Movies";
 import Snapshots from "./pages/Snapshots";
 import Projects from "./pages/Projects";
 
@@ -31,75 +30,69 @@ function Home() {
 
   const links = [
     {
-      color: "bg-slate-300",
       text: "Photography",
       link: "#",
-      icon: <FaCameraRetro className="w-6 h-6 inline-block mr-2" />,
+      icon: <FaCameraRetro className="w-5 h-5 inline-block mr-2" />,
       onClick: (event) => {
         event.preventDefault();
         setShowCountries(!showCountries);
       },
       hasDropdown: true,
+      external: false,
     },
     {
-      color: "bg-slate-300",
       text: "Snapshots",
       link: "/snapshots",
-      icon: <FaPhotoFilm className="w-6 h-6 inline-block mr-2" />,
+      icon: <FaPhotoFilm className="w-5 h-5 inline-block mr-2" />,
       onClick: (event) => {
         event.preventDefault();
         navigate("/snapshots");
-      }
-      
+      },
+      external: false,
     },
-
     {
-      color: "bg-slate-300",
       text: "Movies",
       link: "/movies",
-      icon: <BiSolidCameraMovie className="w-6 h-6 inline-block mr-2" />,
+      icon: <BiSolidCameraMovie className="w-5 h-5 inline-block mr-2" />,
       onClick: (event) => {
         event.preventDefault();
         navigate("/movies");
-      }
+      },
+      external: false,
     },
-    
     {
-      color: "bg-slate-300",
       text: "Projects",
       link: "/projects",
-      icon: <FaCode className="w-6 h-6 inline-block mr-2" />,
+      icon: <FaCode className="w-5 h-5 inline-block mr-2" />,
       onClick: (event) => {
         event.preventDefault();
         navigate("/projects");
-      }
-
+      },
+      external: false,
     },
     {
-      color: "bg-slate-300",
       text: "Github",
       link: "https://github.com/pranavsetty",
-      icon: <FaGithub className="w-6 h-6 inline-block mr-2" />,
+      icon: <FaGithub className="w-5 h-5 inline-block mr-2" />,
+      external: true,
     },
     {
-      color: "bg-slate-300",
       text: "LinkedIn",
       link: "https://www.linkedin.com/in/pranavsetty/",
-      icon: <FaLinkedin className="w-6 h-6 inline-block mr-2" />,
+      icon: <FaLinkedin className="w-5 h-5 inline-block mr-2" />,
+      external: true,
     },
     {
-      color: "bg-slate-300",
       text: "Twitter",
       link: "https://x.com/pranav_setty",
-      icon: <FaTwitter className="w-6 h-6 inline-block mr-2" />,
+      icon: <FaTwitter className="w-5 h-5 inline-block mr-2" />,
+      external: true,
     },
-
-
     {
-      color: "bg-slate-300",
       text: "Contact",
       link: "https://pranavbheemsetty.typeform.com/to/ttyZrq",
-      icon: <MdOutlineMailOutline className="w-6 h-6 inline-block mr-2" />,
+      icon: <MdOutlineMailOutline className="w-5 h-5 inline-block mr-2" />,
+      external: true,
     },
   ];
 
@@ -125,75 +118,64 @@ function Home() {
  
 
   return (
-    <div className="w-full min-h-screen bg-gradient-to-r from-red-300 via-purple-400 to-blue-600 flex justify-center items-center px-4 relative">
-
-      
-      <ParticlesBackground />
+    <div className="w-full min-h-screen bg-neutral-950 flex justify-center items-start px-4">
       {/* Content Wrapper */}
-      <div className="max-w-2xl mx-auto flex flex-col gap-8 relative z-10 pt-10 pb-10">
+      <div className="w-full max-w-md mx-auto flex flex-col items-center gap-6 pt-16 pb-16">
         {/* Profile Image */}
-        <div className="h-48 w-48 mx-auto">
+        <div className="h-24 w-24">
           <img
             src="https://avatars.githubusercontent.com/pranavsetty"
-            className="rounded-full object-cover object-center"
+            className="h-full w-full rounded-full object-cover object-center ring-2 ring-emerald-500"
             alt="Pranav Bheemsetty"
           />
-
         </div>
-  
+
         {/* Header */}
-        <div className="text-center p-3">
-          <h1 className="text-6xl text-gray-300">Pranav Bheemsetty</h1>
-          <div style={{ height: "1.5em", overflow: "hidden" }}>
+        <div className="text-center">
+          <h1 className="text-2xl font-semibold text-neutral-100">Pranav Bheemsetty</h1>
+          <div style={{ height: "1.4em", overflow: "hidden" }} className="mt-1">
             <p
               id="typed-summary"
-              className="text-lg mt-3 inline-block"
-              style={{ lineHeight: "0.25", whiteSpace: "nowrap" }}
+              className="text-sm text-neutral-400 inline-block"
+              style={{ lineHeight: "1.4", whiteSpace: "nowrap" }}
             ></p>
           </div>
         </div>
-  
+
         {/* Links */}
-        <div className="flex flex-col gap-10">
-          {links.map(({ text, color, link, icon, onClick, hasDropdown, subtitle }, index) => (
+        <div className="w-full flex flex-col gap-3">
+          {links.map(({ text, link, icon, onClick, hasDropdown, external }, index) => (
             <div key={index}>
               <a
                 href={link}
                 onClick={onClick}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full text-gray-800"
+                target={external ? "_blank" : undefined}
+                rel={external ? "noopener noreferrer" : undefined}
+                className="block w-full"
               >
-                <div
-                  className={`w-80 sm:w-96 mx-auto ${color} flex items-center justify-between text-xl font-bold py-3 border-2 border-black shadow-custom hover:shadow-none transition-all hover:translate-x-1 hover:translate-y-1`}
-                >
-                  <span className="flex items-center justify-center w-full">
+                <div className="w-full bg-neutral-900 hover:bg-neutral-800 flex items-center justify-center text-base font-medium text-neutral-100 py-3.5 rounded-xl border border-neutral-800 hover:border-emerald-500/60 transition-colors relative">
+                  <span className="flex items-center justify-center [&_svg]:text-emerald-400">
                     {icon}
                     {text}
-                    {subtitle && (
-                      <span className="ml-2 text-sm font-normal text-gray-600">
-                        ({subtitle})
-                      </span>
-                    )}
                   </span>
                   {hasDropdown && (
-                    <span className="mr-3">
+                    <span className="absolute right-4">
                       {showCountries ? (
-                        <FiChevronUp className="w-6 h-6" />
+                        <FiChevronUp className="w-5 h-5 text-neutral-400" />
                       ) : (
-                        <FiChevronDown className="w-6 h-6" />
+                        <FiChevronDown className="w-5 h-5 text-neutral-400" />
                       )}
                     </span>
                   )}
                 </div>
               </a>
               {hasDropdown && showCountries && (
-                <div className="mt-3 mb-5 grid grid-cols-2 gap-4 text-center">
+                <div className="mt-3 grid grid-cols-2 gap-3 text-center">
                   {countries.map((country, idx) => (
                     <div
                       key={idx}
                       onClick={() => navigate(`/photos/${country.name}`)}
-                      className="cursor-pointer w-full bg-gray-300 text-lg py-2 border-2 border-black shadow-custom hover:shadow-none transition-all hover:translate-x-1 hover:translate-y-1"
+                      className="cursor-pointer w-full bg-neutral-900 hover:bg-neutral-800 text-sm text-neutral-200 py-2.5 rounded-xl border border-neutral-800 hover:border-emerald-500/60 transition-colors"
                     >
                       <span>
                         {country.flag} {country.name}
@@ -205,6 +187,11 @@ function Home() {
             </div>
           ))}
         </div>
+
+        {/* Footer */}
+        <p className="text-xs text-neutral-600 mt-4">
+          © {new Date().getFullYear()} Pranav Bheemsetty
+        </p>
       </div>
     </div>
   );
